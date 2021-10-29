@@ -28,8 +28,8 @@ public class CostumeService {
             return costumeRepository.save(p);
         }else{
             //Valida si el Id existe, si es vacío no existe y lo guarda
-            Optional<Costume> caux=costumeRepository.getCostume(p.getId());
-            if (caux.isEmpty()){
+            Optional<Costume> paux=costumeRepository.getCostume(p.getId());
+            if (paux.isEmpty()){
                 return costumeRepository.save(p);
             }else{
                 return p;
