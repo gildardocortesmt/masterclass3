@@ -6,7 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import co.usaciclo3.ciclo3.modelo.Costume;
+import co.usaciclo3.ciclo3.model.Costume;
 import co.usaciclo3.ciclo3.repository.CostumeRepository;
 
 @Service
@@ -36,4 +36,24 @@ public class CostumeService {
             }
         }
     }
+    
+    public Costume update(Costume k){
+        if(k.getId()!=null){
+            Optional<Costume> kaux=costumeRepository.getCostume(k.getId());
+            if (!kaux.isEmpty()){
+                return costumeRepository.save(k);
+            }
+
+        }
+    return null;       
+    }
+    
+    public boolean deleteCostume(int id){
+        Boolean aBoolean=getCostume(id).map(costume -> {
+            costumeRepository.delete(costume);
+            return true;
+        }).orElse(false);
+        return aBoolean;
+    }
+
 }

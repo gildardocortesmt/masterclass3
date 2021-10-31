@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 // elrepositorio permite hacer transacciones con la base de datos0
 
-import co.usaciclo3.ciclo3.modelo.Costume;
+import co.usaciclo3.ciclo3.model.Costume;
 import co.usaciclo3.ciclo3.repository.crud.CostumeCrudRepository;
 @Repository
 public class CostumeRepository {
@@ -25,5 +25,8 @@ public class CostumeRepository {
 
     public Costume save(Costume p){
         return costumeCrudRepository.save(p);
+    }
+    public void delete(Costume costume){
+        costumeCrudRepository.delete(costume);
     }
 }
